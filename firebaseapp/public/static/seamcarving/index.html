@@ -1,0 +1,62 @@
+<html>
+<head>
+    <title>Seam Carving: Javascript Canvas</title>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/themes/base/jquery-ui.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="http://static.jquery.com/ui/css/demo-docs-theme/ui.theme.css" type="text/css" media="all" />
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet"></head>
+    <link rel="stylesheet" type="text/css" href="main.css">
+<body>
+    <div class = "page-header">
+        <h1 style ="text-align:center">Seam Carving</h1>
+        <p>Seam Carving (or <a href = "http://en.wikipedia.org/wiki/Seam_carving">Context Aware Image Resizing</a>) is an algorithm to resize images in a way that the main features of the image are preserved, while details in the background may be lost. The algorithm is computationally intensive and hence, web workers are used for the operation.   
+        </p>
+    </div>
+    <div class = "clearfix">
+        <p class = "pull-left">
+            Drag the orange dashed right-border of the image below to resize it.
+        </p>
+        <p class = "pull-right">
+            Drag the image below over the image on left to compare after resizing.
+        </p>
+    </div>
+    <div class = "clearfix">
+        <canvas id = "canvas"></canvas>
+        <img id = "source"/>
+        <div id = "resizer"></div>
+    </div>
+    <marquee style ="clear:both; padding : 0.5em;">If this marquee stops, the UI thread is frozen</marquee>
+    <hr/>
+    <div class = "clearfix">
+        <h4>Try it with other images</h4>
+        <ul id = "images" class = "thumbnails">
+            <li class = "thumbnail">
+                <img src_defer = "images/1.jpg" title = "http://www.flickr.com/photos/mortimer/1654797776/"></li>
+            <li class = "thumbnail">
+                <img src_defer = "images/2.jpg" title = "http://www.flickr.com/photos/thrustty/4120375462/"></li>
+            <li class = "thumbnail">
+                <img src_defer = "images/3.jpg" title = "http://www.flickr.com/photos/mishpo/5226833700/"></li>
+            <li class = "thumbnail">
+                <img src_defer = "images/4.jpg" title = "http://www.flickr.com/photos/doegox/1347667703/"></li>
+            <li class = "thumbnail">
+                <img src_defer = "images/5.jpg" title = "http://www.flickr.com/photos/appaloosa/4443639205/"></li>
+            <li class = "thumbnail">
+                <img src_defer = "images/6.jpg" title = "http://www.flickr.com/photos/ajanhelendam/2369238775/"></li>
+            <li id = "yourImage" class = "thumbnail" style = "cursor:pointer">
+                 <p class = "well" style = "width: 60px; height: 40px">
+                    <small>Add your Image</small>
+                </p>
+            </li>
+        </ul>
+         <input type = "file" id = "fileUpload" class = "hide" onchange = "handleFiles(this.files)"/>
+    </div>
+    <div style ="border-bottom:dotted BLACK 1px;">
+        Logs (
+        <a href = "javascript:(function(){$('#log').empty()})();" style ="font-size : 0.8em">Clear</a>
+        )
+    </div>
+    <div id = "log" style ="font-size:0.8em; height : 100px; overflow-y : scroll;">Logs from Worker</div>
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type = "text/javascript"></script>
+    <script src = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js" type = "text/javascript"></script>
+    <script type="text/javascript" src="main.js"></script>
+</body>
+</html>

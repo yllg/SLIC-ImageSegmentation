@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <title>Seam Carving: Javascript Canvas</title>
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/themes/base/jquery-ui.css" type="text/css" media="all" />
+        <link rel="stylesheet" href="http://static.jquery.com/ui/css/demo-docs-theme/ui.theme.css" type="text/css" media="all" />
+    </head>
+    <style>
+        
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            padding: 0;
+            margin: auto;
+            width: 90%;
+            background-color: WHITE;
+        }
+        
+        #resizer {
+            border: SOLID 2px RED;
+            border-right: DOTTED 5px ORANGE;
+            text-align: left;
+            position: absolute;
+            padding: 0;
+            margin: 0;
+        }
+        
+        #source img {
+            float: left;
+            padding: 1em;
+            height: 200px;
+            cursor: pointer;
+        }
+        
+        #canvas {
+            border: SOLID 1px GRAY;
+        }
+        
+        #source img:hover {
+        }
+    </style>
+    <body>
+        <h1 style ="text-align:center">Seam Carving using Javascript</h1>
+        <div>
+            <a href = "javascript:drawImage(seamCarver.initHeatMap().getHeatMap())">Show Heat Map</a>
+            <a href = "javascript:drawImage(seamCarver.initSeams().getSeams())">Show Seams</a>
+            <a href = "javascript:drawImage(seamCarver.resize({width:300}))">Reduce</a>
+        </div>
+        <img id = "source" src = "images/1.jpg"/>
+        <canvas id = "canvas">
+        </canvas>
+        <marquee>
+            This UI element keeps moving. If this stops, your UI is frozen
+        </marquee>
+    </body>
+    <script src = "SeamCarver.js" type = "text/javascript">
+    </script>
+    <script type="text/javascript">
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        
+        var img = new Image();
+        var imageData = null;
+        img.src = document.getElementById("source").src;
+        var log = function(msg){
+            if (typeof console != "undefined") {
+                console.log(msg);
+            }
+        }
+        
+        var seamCarver = null;
+        img.onload = function(){
+            canvas.height = img.height;
+            canvas.width = img.width;
+            ctx.drawImage(img, 0, 0);
+            imageData = ctx.getImageData(0, 0, img.width, img.height);
+            
+            seamCarver = new SeamCarver({
+                "width": imageData.width,
+                "height": imageData.height,
+                "data": imageData.data
+            });
+        }
+        function drawImage(result){
+            console.log(result)
+            var newImage = ctx.createImageData(imageData.width, imageData.height);
+            for (var i = 0; i < result.length; i++) {
+                newImage.data[i] = result[i];
+            }
+            ctx.putImageData(newImage, 0, 0);
+        }
+    </script>
+</html>

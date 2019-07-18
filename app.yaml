@@ -1,0 +1,62 @@
+application: image-segmentation
+version: 1
+runtime: python27
+api_version: 1
+default_expiration: "1h"
+threadsafe: true
+
+libraries:
+- name: webapp2
+  version: latest
+
+- name: jinja2
+  version: latest
+
+- name: numpy
+  version: latest
+
+- name: markupsafe
+  version: "0.15"
+
+builtins:
+- appstats: on
+- remote_api: on
+
+
+
+skip_files:
+- ^(.*/)?app\.yaml
+- ^(.*/)?app\.yml
+- ^(.*/)?index\.yaml
+- ^(.*/)?index\.yml
+- ^(.*/)?#.*#
+- ^(.*/)?.*~
+- ^(.*/)?.*\.py[co]
+- ^(.*/)?.*/RCS/.*
+- ^(.*/)?\..*
+- ^(.*/)?.*\.bak$
+- ^(logs/.*)
+- ^(reference/.*)
+
+
+handlers:
+- url: /favicon\.ico
+  static_files: appcode/static/files/favicon.ico
+  upload: static/files/favicon\.ico
+
+
+- url: /robots\.txt
+  static_files: appcode/static/robotsnew.txt
+  upload: static/robotsnew\.txt
+
+- url: /static
+  static_dir: appcode/static
+  application_readable: true
+
+- url: /assets
+  static_dir: static
+
+
+- url: .*
+  script: run.app
+
