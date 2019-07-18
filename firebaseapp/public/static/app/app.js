@@ -219,7 +219,7 @@ var tour = {
 
 $(document).ready(function(){
     initialize_ui();
-    $('#introModal').modal();
+    // $('#introModal').modal();
     hopscotch.startTour(tour);
 });
 

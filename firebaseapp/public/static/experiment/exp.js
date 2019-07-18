@@ -207,7 +207,7 @@ for (var index = 0 ; index <data.length;index++){\n\
 
 $(document).ready(function(){
     initialize_ui();
-    $('#introModal').modal();
+    // $('#introModal').modal();
 });
 
 

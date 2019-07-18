@@ -2,7 +2,6 @@
 <html ng-app="cveditor">
   <head>
     <meta charset="UTF-8">
-    <title>Image Eraser by Akshay Bhat</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
     <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -11,10 +10,10 @@
     <!-- Ionicons -->
     <link href="https://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
-    <link href="/static/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="/static/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" /> -->
     <!-- AdminLTE Skins. Choose a skin from the css/skins 
          folder instead of downloading all of them to reduce the load. -->
-    <link href="/static/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="/static/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" /> -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,7 +28,6 @@
     <!-- Site wrapper -->
     <div class="wrapper" ng-controller="CanvasControls">
       <header class="main-header">
-        <a href="/" class="logo"><b>Image</b>Eraser</a>
         <nav class="navbar navbar-static-top" role="navigation">
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
@@ -38,10 +36,9 @@
                     <button type="button" class="close" ng-click="disableStatus()" aria-hidden="true">x</button>
                 </div>
                 </li>
-                <li><a ng-click="showTour()" href="#" id="tutorial"><i class="fa fa-help"></i>Tutorial</a></li>
-                <li><a ng-click="showDev()" href="#" id="dev">{[ dev ? 'Hide' : 'Show' ]} Dev options</a></li>
-                <li><a href="https://github.com/AKSHAYUBHAT/ImageSegmentation" target="_blank" id="github"><i class="fa fa-github"></i> Github</a></li>
-                <li><a target="_blank" href="http://www.akshaybhat.com">By Akshay Bhat</a></li>
+                <li><a ng-click="showTour()" href="#" id="tutorial"><i class="fa fa-help"></i>教程</a></li>
+                <li><a ng-click="showDev()" href="#" id="dev">{[ dev ? '隐藏' : '显示' ]} 开发选项</a></li>
+                <li><a href="https://github.com/yllg" target="_blank" id="github"><i class="fa fa-github"></i> Github</a></li>
             </ul>
           </div>
         </nav>
@@ -85,17 +82,17 @@
         <div class="operations">
             <form id="image-form"  onsubmit="return false;">
                 <input type='file'  id='imgfile' style="display:none"/>
-                <a type='button' class="btn btn-app btn-default" id='btnLoad' ng-click='load_image();'><i class="fa fa-image"></i>Add image</a>
+                <a type='button' class="btn btn-app btn-default" id='btnLoad' ng-click='load_image();'><i class="fa fa-image"></i>添加图片</a>
             </form>
             <button id="drawing-mode_f"
               ng-click="setFreeDrawingMode(!getFreeDrawingMode(1),1)"
               ng-class="{'btn-inverse': getFreeDrawingMode(1)}" class="btn bg-green btn-app">
-              <i class="fa fa-pencil"></i> Draw Foreground
+              <i class="fa fa-pencil"></i> 保留
             </button>
             <button id="drawing-mode_b"
               ng-click="setFreeDrawingMode(!getFreeDrawingMode(2),2)"
               ng-class="{'btn-inverse': getFreeDrawingMode(2)}" class="btn bg-red btn-app">
-              <i class="fa fa-pencil"></i> Draw Background
+              <i class="fa fa-pencil"></i> 去除
             </button>
             <div ng-show="getFreeDrawingMode(1)" class="drawing-mode">
                 <button id="drawing-mode_x" ng-click="setFreeDrawingMode(!getFreeDrawingMode(1),1)" class="btn bg-red btn-app stop_btn"> <i class="fa fa-close"></i>Stop Drawing!</button>
@@ -111,7 +108,7 @@
               <!--<input type="color" bind-value-to="drawingLineColor">-->
             </div>
             </div>
-            <button href="" class="btn btn-app btn-success" id="segment" ng-click="segment()"><i class="fa fa-arrow-circle-right"></i>Segment</button>
+            <button href="" class="btn btn-app btn-success" id="segment" ng-click="segment()"><i class="fa fa-arrow-circle-right"></i>确定</button>
         </div>
         <div id="canvas-wrapper">
             <canvas id="canvas"  width="640" height="640"></canvas>
@@ -143,7 +140,7 @@
         <h4 class="modal-title" id="myModalLabel">Remove backgrounds and Segment objects</h4>
       </div>
       <div class="modal-body">
-        <iframe src="//giphy.com/embed/l41lV079McHnvsAXS" width="480" height="260" frameBorder="0" style="max-width: 100%" class="giphy-embed" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+        <!-- <iframe src="//giphy.com/embed/l41lV079McHnvsAXS" width="480" height="260" frameBorder="0" style="max-width: 100%" class="giphy-embed" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> -->
         <h4 class="m-t"><a href="https://www.youtube.com/watch?v=TTbKBxFwELg">Problem loading the gif? Watch demo on Youtube.</a></h4>
         <!--<img src="/static/img/intro1.png" id="introIMG1">-->
         <!--<img src="/static/img/intro2.png" id="introIMG2">-->
@@ -159,7 +156,7 @@
     <script src="/static/plugins/jQuery/jQuery-2.1.3.min.js"></script> <!-- SlimScroll -->
     <script src="/static/bootstrap/js/bootstrap.min.js" type="text/javascript"></script> <!-- SlimScroll -->
     <script src='/static/plugins/fastclick/fastclick.min.js'></script>    <!-- FastClick -->
-    <script src="/static/dist/js/app.min.js" type="text/javascript"></script> <!-- AdminLTE App -->
+    <!-- <script src="/static/dist/js/app.min.js" type="text/javascript"></script> AdminLTE App -->
     <script>
 //        var payload = "{{ payload }}";
     </script>

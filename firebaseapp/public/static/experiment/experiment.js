@@ -777,7 +777,7 @@ cveditor.controller('CanvasControls', function($scope) {
     $scope.output_canvas = output_canvas;
     $scope.getActiveStyle = getActiveStyle;
     $scope.dev = false;
-    $scope.status = "Note: Images are not uploaded to server, all processing is performed within the browser.";
+    $scope.status = "注意: 图片没有上传到服务器, 所有的处理都在浏览器进行.";
     $scope.current_mode = null;
     $scope.network_json = ""
     addAccessors($scope);
