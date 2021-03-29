@@ -6,7 +6,7 @@ Markdown==2.5.1
 MarkupSafe==0.23
 Paste==1.7.5.1
 PyYAML==3.11
-Pygments==1.6
+Pygments==2.7.4
 WebOb==1.4
 Werkzeug==0.9.6
 amqp==1.4.6
